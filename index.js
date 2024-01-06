@@ -7,21 +7,27 @@ const app = express();
 const port = 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/jiraSESM', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(
+  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1/jiraSESM",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 // Middleware
 app.use(bodyParser.json());
 
 // CRUD operations
-app.post('/tasks', async (req, res) => {
+app.post("/tasks", async (req, res) => {
+    console.log(req.body);
     const task = new Task(req.body);
     try {
         await task.save();
         res.status(201).send(task);
     } catch (e) {
+        console.error("Error saving task:", e); // Log the error
         res.status(400).send(e);
     }
 });
+
 
 app.get('/tasks', async (req, res) => {
     try {
@@ -73,5 +79,5 @@ app.delete('/tasks/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on http://localhost:${port}/tasks`);
 });
