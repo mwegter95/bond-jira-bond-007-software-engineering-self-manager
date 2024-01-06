@@ -1,0 +1,11 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sprint-board, .backlog {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+}
