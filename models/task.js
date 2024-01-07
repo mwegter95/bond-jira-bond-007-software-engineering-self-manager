@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Counter = require('./counter'); // Import the counter model
+import mongoose from 'mongoose';
+import Counter from './counter.js'; // Import the counter model
 
 
 const taskSchema = new mongoose.Schema({
@@ -42,4 +42,4 @@ taskSchema.pre("save", async function (next) {
 
 
 const Task = mongoose.model('Task', taskSchema);
-module.exports = Task;
+export default Task;
