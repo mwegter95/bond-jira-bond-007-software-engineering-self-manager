@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Additional meta tags can be added here -->    <title>UI Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .container {
+/* Additional global styles can be added here */            display: flex;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            background-color: grey;
+            width: 150px;
+            padding: 20px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .backlog,
+        .sprint-board {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .sprint-board {
+            display: flex;
+        }
+
+        .column {
+/* Additional component styles can be added here */            flex-grow: 1;
+            margin: 0 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Header</header>
+    <div class="container">
+        <aside class="sidebar">Sidebar</aside>
+        <div class="main-content">
+            <!-- Additional main content can be added here -->            
+            <nav class="navigation-bar">New Navigation Bar</nav>            
+            <div class="sprint-board">
+                <div class="column">To Do</div>
+                <div class="column">Accepted</div>
+                <div class="column">In Progress</div>
+                <div class="column">Done</div>
+            </div>
+            <div class="backlog">Backlog</div>
+        </div>
+    </div>
+<!-- Additional elements can be added to the body here -->    <footer>Footer</footer>
+</body>
+
+</html>

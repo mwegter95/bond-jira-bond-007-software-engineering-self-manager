@@ -1,5 +1,7 @@
 import React from 'react';
 import Task from './Task.js';
+import "./styles.css";
+
 
 const TaskList = ({ tasks }) => {
     return (

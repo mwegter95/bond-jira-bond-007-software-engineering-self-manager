@@ -2,6 +2,8 @@
 import React from "react";
 import { useTasks } from "../context/TaskContext.js";
 import TaskList from "./TaskList.js";
+import "./styles.css";
+
 
 const Backlog = () => {
   const { state } = useTasks(); // Using useTasks hook here
