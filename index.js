@@ -1,9 +1,14 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const Task = require('./models/task');
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import Task from './models/task.js';
+import cors from 'cors';
 
 const app = express();
+
+// Enable All CORS Requests
+app.use(cors());
+
 const port = 3003;
 
 // Connect to MongoDB

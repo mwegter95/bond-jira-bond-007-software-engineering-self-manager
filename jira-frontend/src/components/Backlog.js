@@ -1,10 +1,16 @@
+// Backlog.js
 import React from "react";
 import { useTasks } from "../context/TaskContext.js";
 import TaskList from "./TaskList.js";
 
 const Backlog = () => {
   const { state } = useTasks(); // Using useTasks hook here
-  const backlogTasks = state.tasks.filter(
+  console.log("state here: ", state);
+
+  // Check if tasks is undefined and initialize it as an empty array if it is
+  const tasks = state.tasks || [];
+
+  const backlogTasks = tasks.filter(
     (task) => !task.sprintId || task.sprintId === "past" || task.sprintId
   );
 

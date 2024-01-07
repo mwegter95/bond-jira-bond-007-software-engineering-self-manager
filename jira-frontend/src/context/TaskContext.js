@@ -1,9 +1,13 @@
+// TaskContext.js
 import { createContext, useContext, useReducer } from 'react';
-import axios from "axios";
+import { useEffect } from "react";
+import { default as axios } from "axios";
+
 
 const fetchTasks = async () => {
   try {
-    const response = await axios.get("/api/tasks");
+    const response = await axios.get("http://localhost:3003/tasks");
+    console.log("response.data ", response.data)
     return response.data; // Assuming the data is directly in the response
   } catch (error) {
     console.error("Error fetching tasks:", error);
@@ -11,9 +15,16 @@ const fetchTasks = async () => {
   }
 };
 
+
 export const TaskContext = createContext();
 
-export const useTasks = () => useContext(TaskContext);
+export const useTasks = () => {
+  const context = useContext(TaskContext);
+  if (!context) {
+    throw new Error("useTasks must be used within a TaskProvider");
+  }
+  return context;
+};
 
 const taskReducer = (state, action) => {
     // Reducer logic based on action.type
@@ -30,11 +41,31 @@ const taskReducer = (state, action) => {
 };
 
 export const TaskProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(taskReducer, { tasks: [], loading: true });
+  const [state, dispatch] = useReducer(taskReducer, {
+    tasks: [],
+    loading: true,
+    error: null,
+  });
 
-    // Value to be passed to context
-    const value = { state, dispatch };
+  useEffect(() => {
+    const loadData = async () => {
+      dispatch({ type: "TASKS_LOADING" });
+      try {
+        const tasks = await fetchTasks();
+        console.log("tasks ",tasks)
+        dispatch({ type: "TASKS_LOADED", payload: tasks });
+      } catch (error) {
+        dispatch({ type: "TASKS_ERROR", payload: error });
+      }
+    };
 
-    return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
+    loadData();
+  }, []);
+
+  return (
+    <TaskContext.Provider value={{ state, dispatch }}>
+      {children}
+    </TaskContext.Provider>
+  );
 };
 
