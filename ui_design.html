@@ -118,7 +118,11 @@
             background-color: #ffebe6;
             border-color: #f5b3b0;
         }
-    </style>
+    /* Task Detail Modal Styles */
+    .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); }
+    .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; }
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+    .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }    </style>
 </head>
 
 <body>
@@ -167,6 +171,13 @@
         </div>
     </div>
     <footer>&copy; 2024 My Project Management Tool</footer>
-</body>
+    <!-- Task Detail Modal -->
+    <div id="task-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Task Details</h2>
+            <p id="task-details">Details about the task...</p>
+        </div>
+    </div></body>
 
 </html>
