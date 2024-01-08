@@ -122,7 +122,11 @@
     .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); }
     .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; }
     .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
-    .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }    </style>
+    /* Task Detail Modal Styles */
+    .modal { position: fixed; right: 0; top: 0; width: 33%; height: 100%; overflow: auto; background-color: white; border-left: 1px solid #ddd; padding: 20px; box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.2); }
+    .modal-content { margin: 20px; }
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .close:hover { color: black; }    .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }    </style>
 </head>
 
 <body>
@@ -136,7 +140,14 @@
             <a href="#" class="nav-item">View All Tasks</a>
         </aside>
         <div class="main-content">
-            <nav class="navigation-bar">
+    <!-- Task Detail Modal -->
+    <div id="task-detail-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Task Details</h2>
+            <p id="task-details">Details about the task will appear here...</p>
+        </div>
+    </div>            <nav class="navigation-bar">
                 <a href="#" class="nav-item">Home</a>
                 <a href="#" class="nav-item">Sprint Board</a>
                 <a href="#" class="nav-item">Backlog</a>
@@ -178,6 +189,16 @@
             <h2>Task Details</h2>
             <p id="task-details">Details about the task...</p>
         </div>
-    </div></body>
+    <script>
+        document.querySelectorAll(".draggable-task").forEach(function(task) {
+            task.addEventListener("click", function() {
+                document.getElementById("task-detail-modal").style.display = "block";
+                document.getElementById("task-details").innerText = this.innerText + " details";
+            });
+        });
+        document.querySelector(".close").addEventListener("click", function() {
+            document.getElementById("task-detail-modal").style.display = "none";
+        });
+    </script>    </div></body>
 
 </html>
