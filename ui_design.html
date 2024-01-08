@@ -81,9 +81,20 @@
             border-radius: 5px;
         }
 
+        .sprint-board {
+            display: flex;
+            justify-content: space-between; /* Ensure columns are spaced out */
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+
         /* Column Styles */
         .column {
-            flex: 1 0 22%; /* Adjusting column width for side-by-side layout */            flex-grow: 1;
+            flex: 1; /* Simplify the flex property */
             margin: 0 10px;
             min-height: 200px;
             display: flex;

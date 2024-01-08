@@ -24,6 +24,14 @@ confirm_edit() {
     return $?
 }
 
+# Debugging function
+debug_output() {
+    echo "Expected '.sprint-board' to have 'display: flex;'"
+    grep -A 2 '.sprint-board {' "$TEMP_FILE"
+    echo "Expected '.column' to have 'flex: 1;'"
+    grep -A 2 '.column {' "$TEMP_FILE"
+}
+
 # Process the confirmation and overwrite if correct
 if confirm_edit; then
     mv "$TEMP_FILE" "$HTML_FILE"
@@ -32,6 +40,7 @@ if confirm_edit; then
     echo "File processed and committed successfully."
 else
     echo "Edit confirmation failed. Original file is unchanged."
+    debug_output
     # Restore original file
     mv "$BACKUP_FILE" "$HTML_FILE"
 fi
