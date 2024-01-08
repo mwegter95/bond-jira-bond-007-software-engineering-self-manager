@@ -1,7 +1,7 @@
 diff --git a/ui_design.html b/ui_design.html
 --- a/ui_design.html
 +++ b/ui_design.html
-@@ -74,6 +74,7 @@
-         <!-- Additional main content can be added here -->
-+        <div id="task123" draggable="true">Draggable Task</div>
-         <nav class="navigation-bar">New Navigation Bar</nav>
+@@ -79,6 +79,7 @@
+                 <div class="column">Done</div>
++                <div id="task123" draggable="true" style="margin: 10px;">Draggable Task</div>
+             </div>

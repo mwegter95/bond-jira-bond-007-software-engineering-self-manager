@@ -1,0 +1,12 @@
+diff --git a/ui_design.html b/ui_design.html
+index 938e24f..a1ed64f 100644
+--- a/ui_design.html
++++ b/ui_design.html
+@@ -79,6 +79,7 @@
+                 <div class="column">In Progress</div>
+                 <div class="column">Done</div>
+             </div>
++                    <div id="task123" draggable="true" style="margin: 10px;">Draggable Task</div>
+             <div class="backlog">Backlog</div>
+         </div>
+     </div>

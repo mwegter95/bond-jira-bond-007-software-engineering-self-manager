@@ -4,85 +4,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Additional meta tags can be added here -->    <title>UI Design</title>
+    <title>UI Design</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             height: 100vh;
+            background-color: #f4f5f7;
         }
 
-        header {
-            background-color: blue;
+        header,
+        footer {
+            background-color: #0052cc;
             color: white;
             padding: 10px;
             text-align: center;
         }
 
         footer {
-            background-color: green;
-            color: white;
-            padding: 10px;
-            text-align: center;
             margin-top: auto;
         }
 
+        /* Container Styles */
         .container {
-/* Additional global styles can be added here */            display: flex;
+            display: flex;
             flex-grow: 1;
         }
 
+        /* Sidebar Styles */
         .sidebar {
-            background-color: grey;
-            width: 150px;
+            background-color: #0747a6;
+            color: white;
+            width: 200px;
             padding: 20px;
         }
 
+        /* Main Content Styles */
         .main-content {
             flex-grow: 1;
             padding: 20px;
         }
 
-        .backlog,
-        .sprint-board {
+        /* Navigation Bar Styles */
+        .navigation-bar {
+            background-color: #172b4d;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #0052cc;
+        }
+
+        /* Sprint Board and Backlog Styles */
+        .sprint-board,
+        .backlog {
             margin: 10px;
             padding: 20px;
             border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
         }
 
-        .sprint-board {
-            display: flex;
-        }
-
+        /* Column Styles */
         .column {
-/* Additional component styles can be added here */            flex-grow: 1;
+            flex-grow: 1;
             margin: 0 10px;
-            background-color: #f9f9f9;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Draggable Task Styles */
+        .draggable-task {
+            background-color: #eae6ff;
+            border: 1px solid #b3b0f5;
+            border-radius: 5px;
             padding: 10px;
+            margin-bottom: 10px;
+            cursor: grab;
+            width: 90%;
+            text-align: center;
+        }
+
+        .backlog .draggable-task {
+            background-color: #ffebe6;
+            border-color: #f5b3b0;
         }
     </style>
 </head>
 
 <body>
-    <header>Header</header>
+    <header>Project Management Board</header>
     <div class="container">
-        <aside class="sidebar">Sidebar</aside>
+        <aside class="sidebar">
+            <a href="#" class="nav-item">Home</a>
+            <a href="#" class="nav-item">Sprint Board</a>
+            <a href="#" class="nav-item">Backlog</a>
+            <a href="#" class="nav-item">Create Task</a>
+            <a href="#" class="nav-item">View All Tasks</a>
+        </aside>
         <div class="main-content">
-            <!-- Additional main content can be added here -->            
-            <nav class="navigation-bar">New Navigation Bar</nav>            
+            <nav class="navigation-bar">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Sprint Board</a>
+                <a href="#" class="nav-item">Backlog</a>
+                <a href="#" class="nav-item">Create Task</a>
+                <a href="#" class="nav-item">View All Tasks</a>
+            </nav>
             <div class="sprint-board">
-                <div class="column">To Do</div>
-                <div class="column">Accepted</div>
-                <div class="column">In Progress</div>
-                <div class="column">Done</div>
+                <div class="column">
+                    <h3>To Do</h3>
+                    <div class="draggable-task" draggable="true">Task 1</div>
+                    <div class="draggable-task" draggable="true">Task 2</div>
+                </div>
+                <div class="column">
+                    <h3>Accepted</h3>
+                    <div class="draggable-task" draggable="true">Task 3</div>
+                </div>
+                <div class="column">
+                    <h3>In Progress</h3>
+                    <div class="draggable-task" draggable="true">Task 4</div>
+                </div>
+                <div class="column">
+                    <h3>Done</h3>
+                    <div class="draggable-task" draggable="true">Task 5</div>
+                </div>
             </div>
-            <div class="backlog">Backlog</div>
+            <div class="backlog">
+                <h3>Backlog</h3>
+                <div class="draggable-task" draggable="true">Backlog Task 1</div>
+                <div class="draggable-task" draggable="true">Backlog Task 2</div>
+                <div class="draggable-task" draggable="true">Backlog Task 3</div>
+            </div>
         </div>
     </div>
-<!-- Additional elements can be added to the body here -->    <footer>Footer</footer>
+    <footer>&copy; 2024 My Project Management Tool</footer>
 </body>
 
 </html>
